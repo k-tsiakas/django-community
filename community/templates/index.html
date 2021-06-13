@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="profile-info row">
+  <div class="profile_picture col-sm">
+    {% if user.communityuser.profile_pic %}
+      <img class="profile_pic" src="/media/{{ user.communityuser.profile_pic }}" alt="">
+    {% else %}
+      <h5>Profile Picture: Not Found</h5>
+    {% endif %}
+  </div>
+  <div class="portfolio_email col-sm">
+    <ul>
+      <li class="email">
+        {% if user.email %}
+          <h5>Email: {{ user.email }}</h5>
+        {% else %}
+          <h5>Email: Not Found</h5>
+        {% endif %}
+      </li>
+      <li class="portfolio">
+        {% if user.communityuser.portfolio %}
+          <h5>Portfolio: <a href="{{ user.communityuser.portfolio}}">{{ user.communityuser.portfolio}}</a></h5>
+        {% else %}
+          <h5>Portfolio: Not Found</h5>
+        {% endif %}
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="extras">
+  <h3>Total Posts: {{ posts.count }}</h3>
+  <ul>
+    {% for post in posts %}
+      <li>{{ post.title }}</li>
+    {% endfor%}
+  </ul>
+</div>
+{% else %}
+{% endif %}
+{% endblock %}

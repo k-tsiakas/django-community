@@ -1,0 +1,155 @@
+html {
+  scroll-behavior: smooth;
+}
+* {box-sizing: border-box}
+body{
+  margin: 0 auto;
+  background-color: #eee;
+  color: #6a6f8c;
+  font: 700 1.25rem/2.125rem 'New Tegomin', serif;
+  /* font: 600 16px/18px 'Open Sans',sans-serif; */
+}
+.container{
+  position: relative;
+  margin-top: 5rem;
+}
+.bg-dark{
+  background-color: #1663BE!important;
+}
+.dropdown-menu{
+  background-color: #343434;
+  min-width: 8rem;
+}
+table, th, td{
+  margin: 0 auto;
+  background-color: #3153E4;
+  color: #ccc;
+  border-bottom: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  padding: 1em;
+  border-radius: 10px;
+}
+a{
+  color: #aaa;
+}
+a:hover{
+  color: #1161ee;
+}
+
+
+.form_wrapper{
+  margin: 0 auto;
+  max-width: 40rem;
+  background: url('/static/base/space.jpg') no-repeat center;
+  border-radius: 10px;
+}
+.custom_form{
+  width: 100%;
+  background-color: rgba(40,57,101,.8);
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  border-radius: 10px;
+  color: #eee;
+  padding: 1em;
+
+}
+.custom_form input,
+.custom_form label,
+.custom_form .btn{
+  margin: auto;
+  width:60%;
+  color:#eee;
+  display: block;
+  margin-bottom:10px;
+}
+
+.custom_form input,
+.custom_form .btn{
+  border: none;
+  border-radius: 15px;
+  background: rgba(255,255,255,.2);
+  padding: 0.25em;
+}
+.custom_form label{
+  color: #aaa;
+  font-size: 0.75em;
+  text-align: left;
+}
+.custom_form .btn {
+    background: #1161ee;
+    width: 30%;
+}
+.custom_form .group{
+  margin: auto;
+  width: 60%;
+  display: flex;
+
+}
+
+.custom_form .group .check,
+.custom_form .group label{
+  width: auto;
+  margin: 0;
+  padding-bottom: 1em;
+  padding-left: 0.5em;
+}
+.custom_form .group .check{
+  margin-top: 0.7rem;
+}
+.custom_form .group .check:checked + label {
+    color: #fff;
+}
+.navbar, .nav-item, .nav-link{
+  transition: all 0.2s ease;
+}
+.navbar img{
+  height:2rem;
+  background-color: #eee;
+  border-radius: 25px;
+  border: none;
+}
+.navbar button{
+  border: none;
+  background-color: transparent;
+  cursor:pointer;
+}
+.navbar p{
+  color: #eee;
+  padding-left: 0.3rem;
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+.profile_pic{
+  height: 15rem;
+  border-radius: 5px;
+}
+.profile_picture, .portfolio, .email{
+  color: #eee;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+.portfolio, .email{
+  background-color: #1663BE;
+}
+.portfolio a:hover{
+  color: #eee;
+}
+ul {
+    list-style-type: none;
+}
+.email{
+  border-bottom: groove;
+  border-color: #eee;
+}
+.extras{
+  margin: 0 auto;
+  text-align: center;
+  border-top: groove;
+  border-color: #1663BE;
+  border-radius: 30px;
+}
+.profile-info{
+
+}

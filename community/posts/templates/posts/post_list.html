@@ -1,0 +1,68 @@
+{% extends "posts/post_base.html" %}
+
+{% block post-body %}
+
+
+  {% if user.is_authenticated %}
+    {% if posts %}
+    <h1 class="text-center">{{ header }}</h1>
+    <div class="posts-list card-columns">
+
+        {% for post in posts %}
+        <a href="{% url 'posts:post' post.id %}">
+        <div class="sm-post-container card ">
+          {% if post.file %}
+            {% if post.get_file_extension == '.jpg' or post.get_file_extension == '.jpeg' or post.get_file_extension == '.png' %}
+              <img class="card-img-top" src="{{ post.file.url }}"   alt="">
+            {% elif post.get_file_extension == '.mp4' %}
+              <div class="embed-responsive embed-responsive-16by9">
+                <video id="post-video" class="vjs-tech" preload="metadata">
+                  <source src="{{ post.file.url }}" type="video/mp4" class="embed-responsive">
+                </video>
+              </div>
+            {% else %}
+                <h5>{{ post.file }}</h5>
+            {% endif %}
+            {% else %}
+            <h5>No file...</h5>
+          {% endif %}
+          <div class="card-body">
+            <div class="post-title card-title text-center">
+              <h3>{{ post.title }}</h3>
+            </div>
+            <small class="text-muted"> <strong>by:</strong>{{ post.user.username }}</small>
+          </div>
+        </div>
+        </a>
+        {% endfor %}
+      </div>
+
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page=1">&laquo; first</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item "><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+          {% endif %}
+          <li class="page-item active"><a class="page-link" href="#">{{ page_obj.number }}</a></li>
+          {% if page_obj.has_next %}
+          <li class="page-item "><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+          </li>
+          {% endif %}
+        </ul>
+
+    {% else %}
+    <h3 class="text-center">{{ user.username }} you have not any post yet. <a class="btn btn-primary" href="{% url 'posts:create' %}">Create</a></h3>
+    {% endif %}
+  {% else %}
+  <h1>You are not authorized </h1>
+  {% endif %}
+{% endblock %}

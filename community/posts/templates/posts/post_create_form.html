@@ -1,0 +1,12 @@
+{% extends "posts/post_base.html" %}
+
+{% block post-body %}
+
+<h1 class="text-center">Create a new Post</h1>
+<form class="posts-form" enctype="multipart/form-data" action="{% url 'posts:create' %}" method="post">
+  {% csrf_token%}
+  {{ form.as_p }}
+  <input type="submit" class="btn btn-success btn-lg" value="Create">
+
+</form>
+{% endblock %}

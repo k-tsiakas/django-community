@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+      {% if users %}
+      <table>
+        <thead>
+          <th>Username</th>
+          <th>Email</th>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr>
+            <td>{{ user }}</td>
+            <td>{{ email }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <h2>No users found...</h2>
+      {% endif %}
+{% endblock %}

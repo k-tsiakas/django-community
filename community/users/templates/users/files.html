@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+{% load my_filters %}
+    {% if files %}
+    <table>
+      <thead>
+        <th>Filename</th>
+        <th>Date</th>
+        <th>Url</th>
+        <th>Owner</th>
+      </thead>
+      <tbody>
+        {% for file in files %}
+        <tr>
+          <td>{{ file.filename }}</td>
+          <td>{{ file.date }}</td>
+          <td>{{ file.url }}</td>
+          <td>{{ file.owner }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <h2>No files found...</h2>
+    {% endif %}
+{% endblock %}

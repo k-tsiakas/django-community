@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form_wrapper">
+
+
+    <div class="custom_form">
+
+      <h1>Profile Info</h1>
+      <form enctype="multipart/form-data" method="POST">
+
+        {% csrf_token %}
+        {{ u_form.as_p }}
+        {{ p_form.as_p }}
+          <input type="submit" class="btn btn-primary" value="Update">
+
+      </form>
+
+    </div>
+</div>
+{% endblock %}

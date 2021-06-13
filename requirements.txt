@@ -1,0 +1,9 @@
+Django
+djongo
+faker
+bcrypt
+django[argon2]
+pillow
+django-crispy-forms
+misaka
+django-braces

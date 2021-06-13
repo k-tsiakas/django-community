@@ -1,0 +1,14 @@
+virtualenv -p /usr/bin/python3.8 venv #create venv
+source venv/bin/activate #activate venv
+pip install -r requirements.txt #install packages to venv
+django-admin startproject community #create a django project
+python manage.py runserver 0.0.0.0:10000 #run your project
+python manage.py startapp users #create an application within the project
+#add app to INSTALLED_APPS
+create a view in views.py
+python manage.py collectstatic # RENEW STATIC
+python manage.py createsuperuser # create admin user
+python manage.py migrate # migrate changes to db
+python manage.py makemigrations {app_name}
+python manage.py migrate --run-syncdb
+python manage.py shell

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="post-container card ">
+      {% if object.file %}
+      {% if object.get_file_extension == '.jpg' or object.get_file_extension == '.jpeg' or object.get_file_extension == '.png' %}
+        <img class="card-img-top" src="{{ object.file.url }}"   alt="">
+        <a href="{{ object.file.url }}"  download class="text-dark "><button type="button" class="btn btn-info btn-sm float-right" name="button">Download</button></a>
+      {% elif object.get_file_extension == '.mp4' %}
+        <div class="embed-responsive embed-responsive-16by9">
+          <video id="post-video" class="vjs-tech" preload="auto" autoplay controls>
+            <source src="{{ object.file.url }}" type="video/mp4" class="embed-responsive">
+          </video>
+        </div>
+        {% else %}
+          <a href="{{ object.file.url }}"  download class="text-dark float-right"><h5>{{ object.file }}</h5></a>
+      {% endif %}
+    {% else %}
+    
+    {% endif %}
+  <div class="card-body">
+
+
+    <div class="post-title card-title text-center">
+      <h1>{{ post.title }}</h1>
+    </div>
+    <span class="d-inline "> <strong>Created at:</strong>{{ post.date }}</span>
+    <span class="d-inline float-right"> <strong>by:</strong>{{ post.user.username }}</span>
+
+    <div class="post-content card-text">
+      <p> {{post.content_html|safe}} </p>
+    </div>
+    {% if object.user == user %}
+    <div class="post-options text-center">
+        <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'posts:update' object.id %}">Update</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'posts:delete' object.id %}">Delete</a>
+    </div>
+    {% endif %}
+  </div>
+  <div class="card-footer">
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+  </div>
+</div>
+
+{% endblock %}
