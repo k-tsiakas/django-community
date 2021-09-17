@@ -26,8 +26,3 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-# serve static files with gunicorn, but you better use an nginx for that
-
-urlpatterns += staticfiles_urlpatterns()

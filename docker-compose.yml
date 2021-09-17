@@ -3,6 +3,7 @@ services:
   django-community:
     container_name: django-community
     image: django_community_image
+    command: python manage.py runserver 0.0.0.0:10000
     build:
       context: .
     ports:

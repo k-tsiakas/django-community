@@ -9,8 +9,9 @@ RUN pip install -r requirements.txt
 # needed for logs
 ENV PYTHONUNBUFFERED=1
 
+
 ADD . /app
 
-WORKDIR /app/community
 
-CMD ["python","manage.py","runserver","0.0.0.0:10000"]
+
+WORKDIR /app/community

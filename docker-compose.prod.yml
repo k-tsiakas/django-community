@@ -6,10 +6,24 @@ services:
     command: gunicorn community.wsgi:application --workers=2 --bind 0.0.0.0:10000
     build:
       context: .
-      dockerfile: prodDockerfile
-    ports:
-      - 10000:10000
+      dockerfile: Dockerfile
     restart: always
     volumes:
+      - static_files:/app/community/static
       - ./community/media:/app/community/media
       - ./community/db.sqlite3:/app/community/db.sqlite3
+
+  nginx:
+    container_name: prod-django-nginx
+    image: nginx-alpine
+    build: ./nginx
+    ports:
+      - 8080:80
+    depends_on:
+      - prod-django-community
+    volumes:
+      - static_files:/app/community/static
+      - ./community/media:/app/community/media
+
+volumes:
+  static_files:
