@@ -1,0 +1,15 @@
+version: '3'
+services:
+  prod-django-community:
+    container_name: prod-django-community
+    image: prod-django_community_image
+    command: gunicorn community.wsgi:application --workers=2 --bind 0.0.0.0:10000
+    build:
+      context: .
+      dockerfile: prodDockerfile
+    ports:
+      - 10000:10000
+    restart: always
+    volumes:
+      - ./community/media:/app/community/media
+      - ./community/db.sqlite3:/app/community/db.sqlite3

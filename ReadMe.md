@@ -33,6 +33,11 @@ python manage.py runserver 0.0.0.0:10000 #run your project
 ```bash
 sh run.sh
 ```
+- docker in production
+```bash
+sh run-prod.sh
+```
+
 ### Application screenshots
 Login:
 ![alt text](images/login.png)
